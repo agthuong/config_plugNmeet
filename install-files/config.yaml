@@ -2,8 +2,8 @@
 ## otherwise will be problem with nats (https://docs.nats.io/nats-concepts/subjects#characters-allowed-and-recommended-for-subject-names)
 ## Allowed characters: (a - z),(A - Z), (0 - 9), - and _
 client:
-  port: 8080
-  debug: false
+  port: 8084
+  debug: true
   path: "/app/client/dist"
   ## this will require during authentication. Use random secret.
   # openssl rand -hex 32
@@ -53,7 +53,7 @@ log_settings:
   # default: warn
   log_level: "warn"
 livekit_info:
-  host: "https://PLUG_N_MEET_SERVER_DOMAIN:8083/livekit"
+  host: "https://PLUG_N_MEET_SERVER_DOMAIN/livekit"
   api_key: LIVEKIT_API_KEY
   secret: LIVEKIT_SECRET
 redis_info:
@@ -159,7 +159,7 @@ shared_notepad:
     -
       # please check the note from the top of this file
       id: "node_01"
-      host: "ETHERPAD_SERVER_DOMAIN:8083"
+      host: "ETHERPAD_SERVER_DOMAIN"
       client_id: "plugNmeet"
       client_secret: "ETHERPAD_SECRET"
 azure_cognitive_services_speech:

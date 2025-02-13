@@ -3,7 +3,7 @@
 WORK_DIR=/opt/plugNmeet
 
 ## https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/install-files
-CONFIG_DOWNLOAD_URL="https://raw.githubusercontent.com/mynaparrot/plugNmeet-install/main/install-files"
+CONFIG_DOWNLOAD_URL="https://raw.githubusercontent.com/agthuong/config_plugNmeet/main/install-files"
 
 ## https://github.com/mynaparrot/plugNmeet-client/releases/latest/download/client.zip
 CLIENT_DOWNLOAD_URL="https://github.com/mynaparrot/plugNmeet-client/releases/latest/download/client.zip"
@@ -126,8 +126,8 @@ install_haproxy() {
 
   configure_lets_encrypt
 
-  ln -s /etc/letsencrypt/live/"${PLUG_N_MEET_SERVER_DOMAIN}"/fullchain.pem /etc/haproxy/ssl/"${PLUG_N_MEET_SERVER_DOMAIN}".pem
-  ln -s /etc/letsencrypt/live/"${PLUG_N_MEET_SERVER_DOMAIN}"/privkey.pem /etc/haproxy/ssl/"${PLUG_N_MEET_SERVER_DOMAIN}".pem.key
+  ln -s /etc/ssl/dbplus.com.vn.pem /etc/haproxy/ssl/"${PLUG_N_MEET_SERVER_DOMAIN}".pem
+  ln -s /etc/ssl/dbplus.com.vn.pem.key /etc/haproxy/ssl/"${PLUG_N_MEET_SERVER_DOMAIN}".pem.key
 
   # generate the custom DH parameters
   openssl dhparam -out /etc/haproxy/dhparams-2048.pem 2048
@@ -414,9 +414,9 @@ enable_ufw() {
 
   ufw allow "${SSH_PORT}"/tcp
   ufw allow 22/tcp # for safety
-  ufw allow 80/tcp
-  ufw allow 443/tcp
   ufw allow 7881/tcp
+  ufw allow 8083/tcp
+  ufw allow 8084/tcp
   ufw allow 1935/tcp # for ingres RTMP
   ufw allow 443/udp
   ufw allow 50000:60000/udp
